@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Frameworks Fabian Molokwu uses to think about revenue automation: 4Qs lead qualification, PAS/BAB/AIDA copy architecture, GEO/AEO for AI discoverability, and more.">
+    <title>Frameworks | Fabian Molokwu</title>
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Revenue Automation Frameworks | Fabian Molokwu",
+      "description": "Mental models I use: 4Qs Lead Scoring, PAS/BAB/AIDA funnel architecture, GEO/AEO for AI search, 72-Hour Nurture logic, Demand Unit Waterfall, and ABM tiering. Not proprietary — just how I think about revenue systems.",
+      "url": "https://fabianmolokwu-cloud.github.io/frameworks.html",
+      "author": {
+        "@type": "Person",
+        "name": "Fabian Molokwu",
+        "jobTitle": "Technical Marketing Automation & Integration Specialist"
+      }
+    }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --accent: #00ff9d;
+            --bg: #010101;
+            --card-bg: rgba(5, 5, 5, 0.95);
+            --border: rgba(0, 255, 157, 0.25);
+            --font: 'JetBrains Mono', monospace;
+        }
+        body {
+            background: var(--bg);
+            background-image: radial-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: #eaeef2;
+            font-family: var(--font);
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,255,157,0.015) 0px, rgba(0,255,157,0.015) 2px, transparent 2px, transparent 6px);
+            pointer-events: none; z-index: 100;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+        /* Nav */
+        .navbar {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(1,1,1,0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,255,157,0.2); padding: 0.75rem 2rem;
+        }
+        .nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; color: var(--accent); text-decoration: none; font-size: 1rem; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.8rem; transition: all 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); text-shadow: 0 0 5px var(--accent); }
+        .nav-cta { border: 1px solid var(--accent); padding: 0.4rem 1rem; border-radius: 4px; }
+        .nav-cta:hover { background: var(--accent); color: #000 !important; }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; background: none; border: none; }
+
+        /* Header */
+        .page-header { padding: 3rem 0 1rem; }
+        .page-header h1 { font-size: 2rem; color: #fff; }
+        .page-header p { color: #888; margin-top: 0.5rem; font-size: 0.8rem; border-left: 2px solid var(--accent); padding-left: 1rem; }
+
+        /* Framework cards */
+        .framework-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+            padding: 1.5rem; margin-bottom: 1.5rem; transition: all 0.4s;
+        }
+        .framework-card:hover { border-color: var(--accent); box-shadow: 0 10px 25px rgba(0,255,157,0.08); }
+        .framework-card h3 { font-size: 1rem; color: var(--accent); margin-bottom: 0.3rem; }
+        .framework-card .origin { font-size: 0.7rem; color: #555; margin-bottom: 0.8rem; }
+        .framework-card p { font-size: 0.82rem; color: #bbb; line-height: 1.6; }
+
+        footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(0,255,157,0.15); margin-top: 2rem; color: #555; font-size: 0.7rem; line-height: 1.8; }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .menu-toggle { display: block; }
+            .nav-links { display: none; width: 100%; flex-direction: column; gap: 1rem; padding: 1rem 0; margin-top: 1rem; border-top: 1px solid rgba(0,255,157,0.2); }
+            .nav-links.show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-terminal"></i> FABIAN_MOLOKWU</a>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">HOME</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="frameworks.html" class="active">FRAMEWORKS</a>
+                <a href="contact.html" class="nav-cta">HIRE ME</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-cubes"></i> // FRAMEWORKS</h1>
+            <p>Mental models I use to think about revenue automation, lead qualification, and funnel architecture. These are established industry frameworks — not something I invented. They guide how I build automations and structure data.</p>
+        </div>
+
+        <div class="framework-card">
+            <h3>4Qs Lead Qualification</h3>
+            <div class="origin">Popularized in B2B RevOps circles</div>
+            <p>Quantity, Quality, Quickness, Query — a filter for separating signal from noise in inbound leads. I apply this when designing lead routing rules and CRM validation workflows. For example: automate lead scoring so only human, high-intent leads reach the sales team.</p>
+        </div>
+
+        <div class="framework-card">
+            <h3>PAS (Problem-Agitation-Solution)</h3>
+            <div class="origin">Classic copywriting psychology framework</div>
+            <p>Identify the problem, agitate the cost of inaction, present the solution. I use this structure when writing email sequences for Klaviyo flows — especially Welcome and Abandoned Cart recovery emails.</p>
+        </div>
+
+        <div class="framework-card">
+            <h3>BAB (Before-After-Bridge)</h3>
+            <div class="origin">Customer journey mapping methodology</div>
+            <p>Map the customer's current state (Before), their desired state (After), and the Bridge (your solution). I use this when designing multi-step email flows and automation triggers — what does the customer need to see at each stage?</p>
+        </div>
+
+        <div class="framework-card">
+            <h3>AIDA (Attention-Interest-Desire-Action)</h3>
+            <div class="origin">Established marketing funnel model</div>
+            <p>Engineer high-intent engagement through cognitive layers. I apply AIDA when structuring landing pages, email sequences, and conversion paths — making sure each step builds toward the next action.</p>
+        </div>
+
+        <div class="framework-card">
+            <h3>GEO / AEO (Generative & Answer Engine Optimization)</h3>
+            <div class="origin">Emerging discipline for AI search</div>
+            <p>As AI agents become the primary discovery layer, content must be structured for LLM readability. I apply schema markup (JSON-LD), clear heading hierarchies, and authoritative on-page signals so that my work — and my clients' content — can be accurately cited by AI search engines.</p>
+        </div>
+
+        <div class="framework-card">
+            <h3>72-Hour Nurture Logic</h3>
+            <div class="origin">Lead response time research</div>
+            <p>Data shows lead engagement drops dramatically after 72 hours. I use this principle when configuring automation triggers: immediate follow-up (Hour 0-4), authority-building content (Hour 24), and a clear call-to-action (Hour 72). Applied in Make.com scenarios and Klaviyo flows.</p>
+        </div>
+
+        <div class="framework-card">
+            <h3>Demand Unit Waterfall</h3>
+            <div class="origin">SiriusDecisions / Forrester</div>
+            <p>A framework for measuring every stage of the funnel — from total addressable market to closed-won revenue. I use this logic when building HubSpot/Salesforce dashboards and Looker Studio reports: what are we measuring, and where is the drop-off?</p>
+        </div>
+
+        <div class="framework-card">
+            <h3>ABM Tiered Orchestration</h3>
+            <div class="origin">Account-Based Marketing best practices</div>
+            <p>Personalize outreach at scale across 1:1, 1:few, and 1:many tiers. I apply this when designing lead routing rules and segmentation logic in CRMs — different accounts get different treatment based on priority.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-terminal"></i> Fabian Molokwu — Technical Marketing Automation & Integration Specialist</p>
+        <p>📧 <a href="mailto:fabianmolokwu@gmail.com">fabianmolokwu@gmail.com</a> &nbsp;|&nbsp; 𝕏 <a href="https://x.com/FMolokwu1272">@FMolokwu1272</a></p>
+        <p style="margin-top:0.5rem;">These frameworks are public knowledge. I don't claim to have created them — I apply them in real automation work.</p>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+    </script>
+</body>
+          </html>
