@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Fabian Molokwu's real technical projects: Make.com automation, HubSpot dashboard, Salesforce sandbox, SQL cohort analysis, and coming soon — Klaviyo email engine demo.">
+    <title>Projects | Fabian Molokwu</title>
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Technical Projects | Fabian Molokwu",
+      "description": "Real projects built by Fabian Molokwu: Make.com Lead-to-Slack automation, HubSpot Revenue Dashboard, Salesforce Lead Management Sandbox, SQL Cohort Analysis & Looker Studio report. Klaviyo demo coming soon.",
+      "url": "https://fabianmolokwu-cloud.github.io/projects.html",
+      "author": {
+        "@type": "Person",
+        "name": "Fabian Molokwu",
+        "jobTitle": "Technical Marketing Automation & Integration Specialist"
+      }
+    }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --accent: #00ff9d;
+            --bg: #010101;
+            --card-bg: rgba(5, 5, 5, 0.95);
+            --border: rgba(0, 255, 157, 0.25);
+            --font: 'JetBrains Mono', monospace;
+        }
+        body {
+            background: var(--bg);
+            background-image: radial-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: #eaeef2;
+            font-family: var(--font);
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,255,157,0.015) 0px, rgba(0,255,157,0.015) 2px, transparent 2px, transparent 6px);
+            pointer-events: none; z-index: 100;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+        /* Nav */
+        .navbar {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(1,1,1,0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,255,157,0.2); padding: 0.75rem 2rem;
+        }
+        .nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; color: var(--accent); text-decoration: none; font-size: 1rem; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.8rem; transition: all 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); text-shadow: 0 0 5px var(--accent); }
+        .nav-cta { border: 1px solid var(--accent); padding: 0.4rem 1rem; border-radius: 4px; }
+        .nav-cta:hover { background: var(--accent); color: #000 !important; }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; background: none; border: none; }
+
+        /* Header */
+        .page-header { padding: 3rem 0 1rem; }
+        .page-header h1 { font-size: 2rem; color: #fff; }
+        .page-header p { color: #888; margin-top: 0.5rem; font-size: 0.8rem; border-left: 2px solid var(--accent); padding-left: 1rem; }
+
+        /* Project cards */
+        .project-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+            padding: 1.8rem; margin-bottom: 1.5rem; transition: all 0.4s;
+        }
+        .project-card:hover { border-color: var(--accent); box-shadow: 0 10px 25px rgba(0,255,157,0.08); }
+        .project-card h3 { font-size: 1.1rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .project-card .meta { font-size: 0.7rem; color: #666; margin-bottom: 1rem; }
+        .project-card .desc { font-size: 0.85rem; color: #ccc; line-height: 1.7; margin-bottom: 1rem; }
+        .project-card ul { list-style: none; padding: 0; margin: 0.5rem 0; }
+        .project-card ul li { font-size: 0.75rem; color: #aaa; padding: 0.3rem 0; }
+        .project-card ul li::before { content: "> "; color: var(--accent); }
+        .tag-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tag { border: 1px solid rgba(0,255,157,0.4); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.65rem; color: var(--accent); }
+
+        .coming-soon {
+            background: rgba(0,255,157,0.03); border: 1px dashed var(--border); border-radius: 16px;
+            padding: 2rem; text-align: center; margin: 1.5rem 0;
+        }
+        .coming-soon h3 { color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem; }
+        .coming-soon p { color: #888; font-size: 0.8rem; }
+
+        /* CTA */
+        .cta-block { text-align: center; margin: 3rem 0; padding: 2rem; border: 1px solid var(--border); border-radius: 16px; }
+        .cta-block h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .cta-block a { color: var(--accent); text-decoration: none; border: 1px solid var(--accent); padding: 0.6rem 1.5rem; border-radius: 4px; font-weight: 600; transition: all 0.3s; }
+        .cta-block a:hover { background: var(--accent); color: #000; }
+
+        footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(0,255,157,0.15); margin-top: 2rem; color: #555; font-size: 0.7rem; line-height: 1.8; }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .menu-toggle { display: block; }
+            .nav-links { display: none; width: 100%; flex-direction: column; gap: 1rem; padding: 1rem 0; margin-top: 1rem; border-top: 1px solid rgba(0,255,157,0.2); }
+            .nav-links.show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-terminal"></i> FABIAN_MOLOKWU</a>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">HOME</a>
+                <a href="projects.html" class="active">PROJECTS</a>
+                <a href="frameworks.html">FRAMEWORKS</a>
+                <a href="contact.html" class="nav-cta">HIRE ME</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-folder-open"></i> // PROJECTS</h1>
+            <p>Real work I've built. Every item here can be demonstrated live on a call.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Make.com Lead-to-Slack Notification Automation</h3>
+            <div class="meta">Make.com · Google Sheets · Slack · Error Handling</div>
+            <div class="desc">A zero-leakage notification system: monitors a Google Sheet for new form submissions and sends a formatted alert to the relevant Slack channel. Built to ensure no lead is ever lost during sync failures.</div>
+            <ul>
+                <li>Scenario built in Make.com with trigger, action, and error-handling modules</li>
+                <li>2-minute retry loop on failure with full logging</li>
+                <li>Slack message formatted with lead details and timestamp</li>
+                <li>Tested end-to-end with simulated sync interruptions</li>
+            </ul>
+            <div class="tag-strip">
+                <span class="tag">Make.com</span>
+                <span class="tag">Google Sheets</span>
+                <span class="tag">Slack API</span>
+                <span class="tag">Error Handling</span>
+                <span class="tag">Automation</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>HubSpot Revenue Operations Dashboard</h3>
+            <div class="meta">HubSpot · Custom Properties · Pipeline Metrics</div>
+            <div class="desc">Built a comprehensive sales forecasting dashboard in HubSpot for a sandbox environment. Designed to replace manual Excel tracking with automated, real-time pipeline visibility.</div>
+            <ul>
+                <li>Tracked Weekly Deal Creation, Pipeline Velocity by Rep, Stage-to-Stage Conversion Rates, and Closed Won/Lost Reason Analysis</li>
+                <li>Configured custom calculated properties for automated forecast roll-ups</li>
+                <li>Established a weekly data hygiene routine maintaining 98% accuracy across 10,000+ test records</li>
+            </ul>
+            <div class="tag-strip">
+                <span class="tag">HubSpot</span>
+                <span class="tag">Dashboards</span>
+                <span class="tag">Data Hygiene</span>
+                <span class="tag">Sales Forecasting</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Salesforce Lead Management Sandbox</h3>
+            <div class="meta">Salesforce Developer Sandbox · Lead Routing · Lucidchart</div>
+            <div class="desc">Designed and tested a lead assignment ruleset using geography and company size criteria, with complete process documentation.</div>
+            <ul>
+                <li>Created lead routing rules in Salesforce Developer sandbox</li>
+                <li>Mapped the complete Lead-to-Opportunity flow in Lucidchart with decision logic and SLA triggers</li>
+                <li>Validated data integrity using Data Loader for bulk imports and field mapping</li>
+            </ul>
+            <div class="tag-strip">
+                <span class="tag">Salesforce</span>
+                <span class="tag">Lead Routing</span>
+                <span class="tag">Data Loader</span>
+                <span class="tag">Lucidchart</span>
+                <span class="tag">Process Mapping</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>SQL Cohort Analysis & Looker Studio Report</h3>
+            <div class="meta">SQL · Google Sheets · Looker Studio · Cohort Retention</div>
+            <div class="desc">Analyzed a 15,000-row lead export using Pivot Tables and QUERY functions. Built foundational models for Net Revenue Retention analysis.</div>
+            <ul>
+                <li>Wrote SQL queries (SELECT, WHERE, JOIN, DATE_TRUNC) to segment a mock B2B user database by acquisition month</li>
+                <li>Built a cohort retention pivot table in Google Sheets to visualize month-over-month user stickiness</li>
+                <li>Identified a 35% variance in MQL-to-SQL conversion efficiency across channels and presented findings in a Looker Studio visual report</li>
+            </ul>
+            <div class="tag-strip">
+                <span class="tag">SQL</span>
+                <span class="tag">Looker Studio</span>
+                <span class="tag">Cohort Analysis</span>
+                <span class="tag">Data Visualization</span>
+            </div>
+        </div>
+
+        <div class="coming-soon">
+            <h3><i class="fas fa-clock"></i> Coming Soon: Klaviyo Revenue Engine Demo</h3>
+            <p>Welcome Flow, Abandoned Cart Recovery, Post-Purchase Sequence — built in a test store, connected to HubSpot via Make.com, with a Looker Studio dashboard overlaying email + CRM metrics. Currently completing Klaviyo certification.</p>
+        </div>
+
+        <div class="cta-block">
+            <h3>Want to see any of these live?</h3>
+            <p style="color:#888; margin-bottom:1rem; font-size:0.85rem;">I can demo any project on a short call. Real work, no slides.</p>
+            <a href="contact.html">BOOK A CALL</a>
+        </div>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-terminal"></i> Fabian Molokwu — Technical Marketing Automation & Integration Specialist</p>
+        <p>📧 <a href="mailto:fabianmolokwu@gmail.com">fabianmolokwu@gmail.com</a> &nbsp;|&nbsp; 𝕏 <a href="https://x.com/FMolokwu1272">@FMolokwu1272</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+    </script>
+</body>
+  </html>
