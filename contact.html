@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Contact Fabian Molokwu for freelance Make.com integrations, Klaviyo setups, CRM data cleanup, or PostgreSQL data pipelines.">
+    <title>Contact | Fabian Molokwu</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --accent: #00ff9d;
+            --bg: #010101;
+            --card-bg: rgba(5, 5, 5, 0.95);
+            --border: rgba(0, 255, 157, 0.25);
+            --font: 'JetBrains Mono', monospace;
+        }
+        body {
+            background: var(--bg);
+            background-image: radial-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: #eaeef2;
+            font-family: var(--font);
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,255,157,0.015) 0px, rgba(0,255,157,0.015) 2px, transparent 2px, transparent 6px);
+            pointer-events: none; z-index: 100;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+        /* Nav */
+        .navbar {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(1,1,1,0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,255,157,0.2); padding: 0.75rem 2rem;
+        }
+        .nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; color: var(--accent); text-decoration: none; font-size: 1rem; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.8rem; transition: all 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); text-shadow: 0 0 5px var(--accent); }
+        .nav-cta { border: 1px solid var(--accent); padding: 0.4rem 1rem; border-radius: 4px; }
+        .nav-cta:hover { background: var(--accent); color: #000 !important; }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; background: none; border: none; }
+
+        /* Header */
+        .page-header { padding: 3rem 0 1rem; text-align: center; }
+        .page-header h1 { font-size: 2rem; color: #fff; }
+        .page-header p { color: #888; margin-top: 0.5rem; font-size: 0.8rem; }
+
+        /* Contact card */
+        .contact-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+            padding: 2rem; text-align: center; max-width: 500px; margin: 2rem auto;
+        }
+        .contact-card p { font-size: 0.85rem; color: #bbb; line-height: 1.7; margin-bottom: 1.5rem; }
+        .contact-card a { color: var(--accent); text-decoration: none; font-size: 0.9rem; border: 1px solid var(--accent); padding: 0.6rem 1.5rem; border-radius: 4px; display: inline-block; transition: all 0.3s; margin: 0.3rem; }
+        .contact-card a:hover { background: var(--accent); color: #000; }
+        .direct-email { font-size: 0.8rem; color: #aaa; margin-top: 1.5rem; }
+        .direct-email a { border: none; padding: 0; color: var(--accent); font-size: 0.8rem; }
+
+        footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(0,255,157,0.15); margin-top: 2rem; color: #555; font-size: 0.7rem; line-height: 1.8; }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .menu-toggle { display: block; }
+            .nav-links { display: none; width: 100%; flex-direction: column; gap: 1rem; padding: 1rem 0; margin-top: 1rem; border-top: 1px solid rgba(0,255,157,0.2); }
+            .nav-links.show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-terminal"></i> FABIAN_MOLOKWU</a>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">HOME</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="frameworks.html">FRAMEWORKS</a>
+                <a href="contact.html" class="nav-cta active">HIRE ME</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-paper-plane"></i> // GET IN TOUCH</h1>
+            <p>Available for freelance projects — remote, async, reliable.</p>
+        </div>
+
+        <div class="contact-card">
+            <p>I'm currently open to:</p>
+            <p style="font-size:0.8rem; color:#ccc;">
+                • Make.com scenario building & integration<br>
+                • Klaviyo email flow setup & automation<br>
+                • HubSpot / Salesforce CRM data cleanup<br>
+                • PostgreSQL data pipelines<br>
+                • Looker Studio dashboard creation
+            </p>
+            <p style="font-size:0.85rem; color:#aaa;">No project too small. Let's talk about what you need.</p>
+            <a href="mailto:fabianmolokwu@gmail.com"><i class="fas fa-envelope"></i> EMAIL ME</a>
+            <a href="https://x.com/FMolokwu1272"><i class="fab fa-x-twitter"></i> DM ON X</a>
+            <div class="direct-email">
+                Direct email: <a href="mailto:fabianmolokwu@gmail.com">fabianmolokwu@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-terminal"></i> Fabian Molokwu — Technical Marketing Automation & Integration Specialist</p>
+        <p>📧 <a href="mailto:fabianmolokwu@gmail.com">fabianmolokwu@gmail.com</a> &nbsp;|&nbsp; 𝕏 <a href="https://x.com/FMolokwu1272">@FMolokwu1272</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+    </script>
+</body>
+  </html>
